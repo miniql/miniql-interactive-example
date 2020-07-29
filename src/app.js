@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './app.css';
 import * as characters from "./data/characters.json";
+import * as species from "./data/species.json";
+import * as planets from "./data/planets.json";
 import { Input, Button, Tabs } from 'antd';
 import t from 'typy';
 import { CloseOutlined } from '@ant-design/icons';
@@ -33,7 +35,7 @@ function App() {
             </div>
             
             <Tabs 
-                className="mt-4"
+                className="mt-2"
                 type="card"
                 style={{
                     height: "40%",
@@ -52,6 +54,12 @@ function App() {
 //
 function DataTables() {
     const [searchText, setSearchText] = useState("");
+
+    const datasets = [
+        { name: "Characters", data: characters }, 
+        { name: "Species", data: species }, 
+        { name: "Planets", data: planets }, 
+    ];
 
     return (
         <div
@@ -82,26 +90,22 @@ function DataTables() {
 
             <div className="mt-4 h-full">
                 <Tabs type="card">
-                    <TabPane tab="Characters" key="1" >
-                        <div 
-                            className="p-2 pt-4"
-                            style={{
-                                height: "100%",
-                                overflow: "auto",
-                            }}
-                            >
-                            <DataTable
-                                searchText={searchText}
-                                data={characters.default}
-                                />
-                        </div>
-                    </TabPane>
-                    <TabPane tab="Species" key="2">
-                        Content of Tab Pane 2
-                    </TabPane>
-                    <TabPane tab="Planets" key="3">
-                        Content of Tab Pane 3
-                    </TabPane>
+                    {datasets.map(dataset => 
+                        <TabPane tab={dataset.name} key={dataset.name}>
+                            <div 
+                                className="p-2 pt-4"
+                                style={{
+                                    height: "100%",
+                                    overflow: "auto",
+                                }}
+                                >
+                                <DataTable
+                                    searchText={searchText}
+                                    data={dataset.data.default}
+                                    />
+                            </div>
+                        </TabPane>
+                    )}
                 </Tabs>
             </div>
         </div>
