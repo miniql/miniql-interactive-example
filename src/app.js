@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './app.css';
 import * as characters from "./data/characters.json";
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
 import t from 'typy';
+import { CloseOutlined } from '@ant-design/icons';
 const { Search } = Input;
 
 //
@@ -24,14 +25,27 @@ function DataTables() {
 
     return (
         <div>
-            <Search
-                enterButton="Search"
-                placeholder="Enter search text"
-                onSearch={setSearchText}
-                style={{
-                    width: "400px",
-                }}
-                />
+            <div 
+                className="flex flex-row items-center"
+                >
+                <Search
+                    enterButton="Search"
+                    placeholder="Enter search text"
+                    onSearch={setSearchText}
+                    style={{
+                        width: "400px",
+                    }}
+                    />
+
+                {searchText !== ""
+                    && <Button
+                        className="ml-1"
+                        icon={<CloseOutlined />}
+                        onClick={() => setSearchText("")}
+                        >
+                    </Button>
+                }
+            </div>
 
             <div className="mt-4">
                 <DataTable
