@@ -18,7 +18,7 @@ function App() {
     return (
         <div className="flex flex-col p-8 h-screen">
             <div className="flex flex-row flex-grow">
-                <div className="flex-grow">
+                <div className="flex-grow w-1/2">
                     <Tabs type="card">
                         <TabPane 
                             tab={(
@@ -42,7 +42,7 @@ function App() {
                         </TabPane>
                     </Tabs>
                 </div>
-                <div className="flex-grow">
+                <div className="flex-grow w-1/2">
                     <Tabs type="card">
                         <TabPane tab="Query Result" className="p-1">
                             <div className="p-1 h-full border border-solid border-gray-400">
