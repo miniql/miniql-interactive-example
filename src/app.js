@@ -5,26 +5,34 @@ import { Input } from 'antd';
 import t from 'typy';
 const { Search } = Input;
 
+//
+// Renders the application.
+//
 function App() {
-
-    const [searchText, setSearchText] = useState("");    
-    const columnNames = Object.keys(characters.default[0]);
-    const data = characters.default;
-
     return (
         <div className="flex flex-col p-8">
-            <div>
-                <Search
-                    enterButton="Search"
-                    placeholder="Enter search text"
-                    onSearch={setSearchText}
-                    style={{
-                        width: "400px",
-                    }}
-                    />
-            </div>
+            {DataTable(characters.default)}
+        </div>
+    );
+}
 
-            <div>{searchText}</div>
+//
+// Renders a data table.
+//
+function DataTable(data) {
+    const [searchText, setSearchText] = useState("");
+    const columnNames = Object.keys(data[0]);
+
+    return (
+        <div>
+            <Search
+                enterButton="Search"
+                placeholder="Enter search text"
+                onSearch={setSearchText}
+                style={{
+                    width: "400px",
+                }}
+                />
 
             <div className="mt-4">
                 <table>
@@ -39,23 +47,7 @@ function App() {
                     </thead>
                     <tbody>
                         {data
-                            .filter(record => {
-                                if (searchText === "") {
-                                    return true;
-                                }
-                                else {
-                                    for (const columnName of columnNames) {
-                                        const value = record[columnName];
-                                        if (t(value).isString) {
-                                            if (value.toLowerCase().includes(searchText.trim().toLowerCase())) {
-                                                return true;
-                                            }
-                                        }
-                                    }
-
-                                    return false;
-                                }
-                            })
+                            .filter(filterData(searchText, columnNames))
                             .map(record => 
                                 <tr key={record.name}>
                                     {columnNames.map(columnName => 
@@ -72,5 +64,28 @@ function App() {
         </div>
     );
 }
+
+//
+// Helper function to filter data.
+//
+function filterData(searchText, columnNames) {
+    return record => {
+        if (searchText === "") {
+            return true;
+        }
+        else {
+            for (const columnName of columnNames) {
+                const value = record[columnName];
+                if (t(value).isString) {
+                    if (value.toLowerCase().includes(searchText.trim().toLowerCase())) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    };
+}
+
 
 export default App;
