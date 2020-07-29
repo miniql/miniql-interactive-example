@@ -12,8 +12,37 @@ const { TabPane } = Tabs;
 //
 function App() {
     return (
-        <div className="flex flex-col p-8">
-            {DataTables()}
+        <div className="flex flex-col p-8 h-screen">
+            <div 
+                className="flex flex-row flex-grow"
+                >
+                <div className="flex-grow">
+                    <Tabs type="card">
+                        <TabPane tab="Query" key="1">
+                            Left
+                        </TabPane>
+                    </Tabs>
+                </div>
+                <div className="flex-grow">
+                    <Tabs type="card">
+                        <TabPane tab="Query Result" key="1">
+                            Right
+                        </TabPane>
+                    </Tabs>
+                </div>
+            </div>
+            
+            <Tabs 
+                className="mt-4"
+                type="card"
+                style={{
+                    height: "40%",
+                }}
+                >
+                <TabPane tab="Data explorer" key="1">
+                    {DataTables()}
+                </TabPane>
+            </Tabs>
         </div>
     );
 }
@@ -25,10 +54,13 @@ function DataTables() {
     const [searchText, setSearchText] = useState("");
 
     return (
-        <div>
-            <div 
-                className="flex flex-row items-center"
-                >
+        <div
+            className="p-2"
+            style={{
+                height: "100%",
+            }}
+            >
+            <div className="flex flex-row items-center">
                 <Search
                     enterButton="Search"
                     placeholder="Enter search text"
@@ -48,10 +80,16 @@ function DataTables() {
                 }
             </div>
 
-            <div className="mt-4 card-container">
+            <div className="mt-4 h-full">
                 <Tabs type="card">
-                    <TabPane tab="Characters" key="1">
-                        <div className="p-2 pt-4">
+                    <TabPane tab="Characters" key="1" >
+                        <div 
+                            className="p-2 pt-4"
+                            style={{
+                                height: "100%",
+                                overflow: "auto",
+                            }}
+                            >
                             <DataTable
                                 searchText={searchText}
                                 data={characters.default}
