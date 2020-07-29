@@ -60,3 +60,7 @@ tbody tr td:first-of-type {
 .ant-tabs-nav {
     margin-bottom: 0px !important;
 }
+
+.ant-tabs-tab-btn {
+    height: 25px;
+}
