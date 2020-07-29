@@ -5,7 +5,8 @@ import * as species from "./data/species.json";
 import * as planets from "./data/planets.json";
 import { Input, Button, Tabs } from 'antd';
 import t from 'typy';
-import Icon, { CloseOutlined, PlayCircleOutlined, PlayCircleFilled } from '@ant-design/icons';
+import { CloseOutlined, PlayCircleOutlined, PlayCircleFilled } from '@ant-design/icons';
+import ReactJson from "react-json-view";
 const { Search } = Input;
 const { TabPane } = Tabs;
 const { TextArea } = Input;
@@ -16,9 +17,7 @@ const { TextArea } = Input;
 function App() {
     return (
         <div className="flex flex-col p-8 h-screen">
-            <div 
-                className="flex flex-row flex-grow"
-                >
+            <div className="flex flex-row flex-grow">
                 <div className="flex-grow">
                     <Tabs type="card">
                         <TabPane 
@@ -47,7 +46,9 @@ function App() {
                     <Tabs type="card">
                         <TabPane tab="Query Result" className="p-1">
                             <div className="p-1 h-full border border-solid border-gray-400">
-                                Hello
+                                <ReactJson
+                                    src={characters.default}
+                                    />
                             </div>
                         </TabPane>
                     </Tabs>
