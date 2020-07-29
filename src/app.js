@@ -11,17 +11,16 @@ const { Search } = Input;
 function App() {
     return (
         <div className="flex flex-col p-8">
-            {DataTable(characters.default)}
+            {DataTables()}
         </div>
     );
 }
 
 //
-// Renders a data table.
+// Renders the data tables.
 //
-function DataTable(data) {
+function DataTables() {
     const [searchText, setSearchText] = useState("");
-    const columnNames = Object.keys(data[0]);
 
     return (
         <div>
@@ -35,33 +34,47 @@ function DataTable(data) {
                 />
 
             <div className="mt-4">
-                <table>
-                    <thead>
-                        <tr>
-                            {columnNames.map(columnName => 
-                                <th key={columnName}>
-                                    {columnName}
-                                </th>
-                            )}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data
-                            .filter(filterData(searchText, columnNames))
-                            .map(record => 
-                                <tr key={record.name}>
-                                    {columnNames.map(columnName => 
-                                        <td key={`${record.name}-${columnName}`}>
-                                            {record[columnName]}
-                                        </td>
-                                    )}
-                                </tr>
-                            )
-                        }
-                    </tbody>
-                </table>
+                <DataTable
+                    searchText={searchText}
+                    data={characters.default}
+                    />
             </div>
         </div>
+    );
+}
+
+//
+// Renders a data table.
+//
+function DataTable({ searchText, data }) {
+    const columnNames = Object.keys(data[0]);
+
+    return (
+        <table>
+            <thead>
+                <tr>
+                    {columnNames.map(columnName => 
+                        <th key={columnName}>
+                            {columnName}
+                        </th>
+                    )}
+                </tr>
+            </thead>
+            <tbody>
+                {data
+                    .filter(filterData(searchText, columnNames))
+                    .map(record => 
+                        <tr key={record.name}>
+                            {columnNames.map(columnName => 
+                                <td key={`${record.name}-${columnName}`}>
+                                    {record[columnName]}
+                                </td>
+                            )}
+                        </tr>
+                    )
+                }
+            </tbody>
+        </table>
     );
 }
 
