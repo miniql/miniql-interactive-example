@@ -17,8 +17,13 @@ const { TextArea } = Input;
 function App() {
     return (
         <div className="flex flex-col p-8 h-screen">
-            <div className="flex flex-row flex-grow">
-                <div className="flex-grow w-1/2">
+            <div 
+                className="flex flex-row"
+                style={{
+                    height: "50%",
+                }}
+                >
+                <div className="w-1/2 h-full">
                     <Tabs type="card">
                         <TabPane 
                             tab={(
@@ -34,18 +39,20 @@ function App() {
                             )}
                             className="p-1"
                             >
-                            <TextArea 
-                                style={{
-                                    height: "100%",
-                                }}
-                                />
+                            <div className="p-1 h-full overflow-auto">
+                                <TextArea
+                                    style={{
+                                        height: "100%",
+                                    }}
+                                    />
+                            </div>
                         </TabPane>
                     </Tabs>
                 </div>
-                <div className="flex-grow w-1/2">
+                <div className="w-1/2 h-full">
                     <Tabs type="card">
                         <TabPane tab="Query Result" className="p-1">
-                            <div className="p-1 h-full border border-solid border-gray-400">
+                            <div className="p-1 h-full overflow-auto border border-solid border-gray-400">
                                 <ReactJson
                                     src={characters.default}
                                     />
