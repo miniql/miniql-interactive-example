@@ -64,3 +64,12 @@ tbody tr td:first-of-type {
 .ant-tabs-tab-btn {
     height: 25px;
 }
+
+textarea {
+    resize: none;
+}
+
+.ant-menu-item {
+    height: auto !important;
+    white-space: normal !important;
+}

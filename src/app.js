@@ -3,7 +3,7 @@ import './app.css';
 import * as characters from "./data/characters.json";
 import * as species from "./data/species.json";
 import * as planets from "./data/planets.json";
-import { Input, Button, Tabs } from 'antd';
+import { Input, Button, Tabs, Menu } from 'antd';
 import t from 'typy';
 import { CloseOutlined, CaretRightFilled } from '@ant-design/icons';
 import ReactJson from "react-json-view";
@@ -40,11 +40,44 @@ function App() {
                             className="p-1"
                             >
                             <div className="p-1 h-full overflow-auto">
-                                <TextArea
-                                    style={{
-                                        height: "100%",
-                                    }}
-                                    />
+                                <div className="h-full w-full flex flex-row">
+                                    <div className="h-full">
+                                        <Menu 
+                                            mode="vertical"
+                                            style={{
+                                                width: "150px",
+                                            }}
+                                            >
+                                            <Menu.Item>
+                                                Single species
+                                            </Menu.Item>
+                                            <Menu.Divider />
+                                            <Menu.Item>
+                                                Single species and nested homeword
+                                            </Menu.Item>
+                                            <Menu.Divider />
+                                            <Menu.Item>
+                                                All species
+                                            </Menu.Item>
+                                            <Menu.Divider />
+                                            <Menu.Item>
+                                                All species and nested homeword
+                                            </Menu.Item>
+                                        </Menu>
+                                    </div>
+                                    <div className="h-full flex-grow">
+                                        <TextArea 
+                                            style={{
+                                                height: "100%",
+                                            }}
+                                            value={`get: {
+    species: {
+    }
+}
+`}
+                                            />
+                                    </div>
+                                </div>
                             </div>
                         </TabPane>
                     </Tabs>
