@@ -5,7 +5,7 @@ import * as species from "./data/species.json";
 import * as planets from "./data/planets.json";
 import { Input, Button, Tabs } from 'antd';
 import t from 'typy';
-import { CloseOutlined, PlayCircleOutlined, PlayCircleFilled } from '@ant-design/icons';
+import { CloseOutlined, CaretRightFilled } from '@ant-design/icons';
 import ReactJson from "react-json-view";
 const { Search } = Input;
 const { TabPane } = Tabs;
@@ -28,7 +28,7 @@ function App() {
                                     </div>
                                     <Button
                                         className="ml-4 pl-2"
-                                        icon={<PlayCircleOutlined />}
+                                        icon={<CaretRightFilled />}
                                         />
                                 </div>
                             )}
