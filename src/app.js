@@ -5,9 +5,10 @@ import * as species from "./data/species.json";
 import * as planets from "./data/planets.json";
 import { Input, Button, Tabs } from 'antd';
 import t from 'typy';
-import { CloseOutlined } from '@ant-design/icons';
+import Icon, { CloseOutlined, PlayCircleOutlined, PlayCircleFilled } from '@ant-design/icons';
 const { Search } = Input;
 const { TabPane } = Tabs;
+const { TextArea } = Input;
 
 //
 // Renders the application.
@@ -20,15 +21,34 @@ function App() {
                 >
                 <div className="flex-grow">
                     <Tabs type="card">
-                        <TabPane tab="Query" key="1">
-                            Left
+                        <TabPane 
+                            tab={(
+                                <div className="flex flex-row items-center">
+                                    <div>
+                                        Query 
+                                    </div>
+                                    <Button
+                                        className="ml-4 pl-2"
+                                        icon={<PlayCircleOutlined />}
+                                        />
+                                </div>
+                            )}
+                            className="p-1"
+                            >
+                            <TextArea 
+                                style={{
+                                    height: "100%",
+                                }}
+                                />
                         </TabPane>
                     </Tabs>
                 </div>
                 <div className="flex-grow">
                     <Tabs type="card">
-                        <TabPane tab="Query Result" key="1">
-                            Right
+                        <TabPane tab="Query Result" className="p-1">
+                            <div className="p-1 h-full border border-solid border-gray-400">
+                                Hello
+                            </div>
                         </TabPane>
                     </Tabs>
                 </div>
@@ -41,7 +61,7 @@ function App() {
                     height: "40%",
                 }}
                 >
-                <TabPane tab="Data explorer" key="1">
+                <TabPane tab="Data explorer" className="p-1">
                     {DataTables()}
                 </TabPane>
             </Tabs>
@@ -62,12 +82,7 @@ function DataTables() {
     ];
 
     return (
-        <div
-            className="p-2"
-            style={{
-                height: "100%",
-            }}
-            >
+        <div className="h-full">
             <div className="flex flex-row items-center">
                 <Search
                     enterButton="Search"
@@ -92,13 +107,7 @@ function DataTables() {
                 <Tabs type="card">
                     {datasets.map(dataset => 
                         <TabPane tab={dataset.name} key={dataset.name}>
-                            <div 
-                                className="p-2 pt-4"
-                                style={{
-                                    height: "100%",
-                                    overflow: "auto",
-                                }}
-                                >
+                            <div className="p-2 pt-4 h-full overflow-auto">
                                 <DataTable
                                     searchText={searchText}
                                     data={dataset.data.default}
