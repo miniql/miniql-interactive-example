@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './app.css';
 import * as characters from "./data/characters.json";
-import { Input, Button } from 'antd';
+import { Input, Button, Tabs } from 'antd';
 import t from 'typy';
 import { CloseOutlined } from '@ant-design/icons';
 const { Search } = Input;
+const { TabPane } = Tabs;
 
 //
 // Renders the application.
@@ -47,11 +48,23 @@ function DataTables() {
                 }
             </div>
 
-            <div className="mt-4">
-                <DataTable
-                    searchText={searchText}
-                    data={characters.default}
-                    />
+            <div className="mt-4 card-container">
+                <Tabs type="card">
+                    <TabPane tab="Tab 1" key="1">
+                        <div className="p-1">
+                            <DataTable
+                                searchText={searchText}
+                                data={characters.default}
+                                />
+                        </div>
+                    </TabPane>
+                    <TabPane tab="Tab 2" key="2">
+                        Content of Tab Pane 2
+                    </TabPane>
+                    <TabPane tab="Tab 3" key="3">
+                        Content of Tab Pane 3
+                    </TabPane>
+                </Tabs>
             </div>
         </div>
     );
