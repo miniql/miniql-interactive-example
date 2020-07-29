@@ -20,7 +20,7 @@ function App() {
             <div 
                 className="flex flex-row"
                 style={{
-                    height: "50%",
+                    height: "58%",
                 }}
                 >
                 <div className="w-1/2 h-full">
