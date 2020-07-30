@@ -133,7 +133,7 @@ function App() {
                 <div className="ml-1 w-1/2 h-full">
                     <Tabs type="card">
                         <TabPane tab="Query Result" className="p-2">
-                            <div className="p-1 h-full overflow-auto border border-solid border-gray-400">
+                            <div className="p-1 h-full overflow-auto">
                                 <ReactJson
                                     className="p-1"
                                     src={queryResult}
