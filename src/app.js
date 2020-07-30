@@ -15,6 +15,8 @@ const { TextArea } = Input;
 // Renders the application.
 //
 function App() {
+    const [queryText, setQueryText] = useState(exampleQueries[0].text);
+
     return (
         <div className="flex flex-col p-8 h-screen">
             <div 
@@ -45,24 +47,18 @@ function App() {
                                         <Menu 
                                             mode="vertical"
                                             style={{
-                                                width: "150px",
+                                                width: "200px",
                                             }}
                                             >
-                                            <Menu.Item>
-                                                Single species
-                                            </Menu.Item>
-                                            <Menu.Divider />
-                                            <Menu.Item>
-                                                Single species and nested homeword
-                                            </Menu.Item>
-                                            <Menu.Divider />
-                                            <Menu.Item>
-                                                All species
-                                            </Menu.Item>
-                                            <Menu.Divider />
-                                            <Menu.Item>
-                                                All species and nested homeword
-                                            </Menu.Item>
+                                            {exampleQueries.map(exampleQuery => (
+                                                <Menu.Item
+                                                    className="border-0 border-b border-solid border-gray-300"
+                                                    key={exampleQuery.name}
+                                                    onClick={() => setQueryText(exampleQuery.text)}
+                                                    >
+                                                    {exampleQuery.name}
+                                                </Menu.Item>
+                                            ))}
                                         </Menu>
                                     </div>
                                     <div className="h-full flex-grow">
@@ -70,11 +66,8 @@ function App() {
                                             style={{
                                                 height: "100%",
                                             }}
-                                            value={`get: {
-    species: {
-    }
-}
-`}
+                                            value={queryText}
+                                            onChange={e => setQueryText(e.currentTarget.value)}
                                             />
                                     </div>
                                 </div>
@@ -103,13 +96,23 @@ function App() {
                     height: "40%",
                 }}
                 >
-                <TabPane tab="Data explorer" className="p-1">
+                <TabPane tab="Data explorer" className="p-2">
                     {DataTables()}
                 </TabPane>
             </Tabs>
         </div>
     );
 }
+
+//
+// Example queries that can be put in the query editor.
+//
+const exampleQueries = [
+    require(`./queries/single-species`).default,
+    require(`./queries/single-species-with-nested`).default,
+    require(`./queries/all-species`).default,
+    require(`./queries/all-species-with-nested`).default,
+];
 
 //
 // Renders the data tables.
