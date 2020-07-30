@@ -106,6 +106,7 @@ function App() {
                                                 minimap: {
                                                     enabled: false,
                                                 },
+                                                contextmenu: false,
                                             }}
                                             />
                                     </div>
