@@ -7,6 +7,9 @@ import { Input, Button, Tabs, Menu } from 'antd';
 import t from 'typy';
 import { CloseOutlined, CaretRightFilled } from '@ant-design/icons';
 import ReactJson from "react-json-view";
+import json5 from "json5";
+import { miniql } from "miniql";
+import { createQueryResolver } from "@miniql/inline";
 const { Search } = Input;
 const { TabPane } = Tabs;
 const { TextArea } = Input;
@@ -15,7 +18,33 @@ const { TextArea } = Input;
 // Renders the application.
 //
 function App() {
-    const [queryText, setQueryText] = useState(exampleQueries[0].text);
+    const defaultQuery = exampleQueries[0];
+    const [queryText, setQueryText] = useState(defaultQuery.text);
+    const [queryResult, setQueryResult] = useState(undefined);
+
+    //
+    // Execute a query and display the results.
+    //
+    async function executeQuery(queryText) {
+        try {
+            const query = json5.parse(queryText);
+            console.log("Executing query:");
+            console.log(query);
+            const result = await miniql(query, inlineQueryResolver, {});
+            console.log("Setting query result:");
+            console.log(result);
+            setQueryResult(result);
+        }
+        catch (err) {
+            console.error("An error occured running the query:");
+            console.error(err && err.stack || err);
+            setQueryResult({ error: err });
+        }
+    }
+
+    if (queryResult === undefined) {
+        executeQuery(defaultQuery.text);
+    }
 
     return (
         <div className="flex flex-col p-8 h-screen">
@@ -36,6 +65,7 @@ function App() {
                                     <Button
                                         className="ml-4 pl-2"
                                         icon={<CaretRightFilled />}
+                                        onClick={() => executeQuery(queryText)}
                                         />
                                 </div>
                             )}
@@ -81,7 +111,7 @@ function App() {
                             <div className="p-1 h-full overflow-auto border border-solid border-gray-400">
                                 <ReactJson
                                     className="p-1"
-                                    src={characters.default}
+                                    src={queryResult}
                                     />
                             </div>
                         </TabPane>
@@ -103,6 +133,56 @@ function App() {
         </div>
     );
 }
+
+//
+// Configures the query resolver.
+//
+const jsonQueryResolverConfig = {
+    character: {
+        primaryKey: "name",
+        jsonFilePath: "./data/planets.json",
+        nested: {
+            homeworld: {
+                parentKey: "homeworld",
+                from: "planet",
+            },
+            species: {
+                parentKey: "species",
+            },
+        },
+    },
+    species: {
+        primaryKey: "name",
+        nested: {
+            homeworld: {
+                parentKey: "homeworld",
+                from: "planet",
+            },
+        },
+    },
+    planet: {
+        primaryKey: "name",
+        nested: {
+            species: {
+                foreignKey: "homeworld",
+            },
+        },
+    },
+};
+
+//
+// Inline data to run queries against.
+//
+const inlineData = {
+    character: characters.default,
+    species: species.default,
+    planet: planets.default,
+};
+
+//
+// Resolves MiniQL queryies.
+//
+const inlineQueryResolver = createQueryResolver(jsonQueryResolverConfig, inlineData);
 
 //
 // Example queries that can be put in the query editor.
