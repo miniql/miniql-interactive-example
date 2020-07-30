@@ -1,6 +1,6 @@
 
 export default {
-    name: "Single species with nested",
+    name: "2. Single species with nested",
     text:
 `
 // This is JSON5: https://json5.org/
@@ -9,6 +9,7 @@ export default {
     "get": {
         "species": {
             "args": {
+                // Gets a single species with this name.
                 "name": "Hutt"
             },
             "resolve": {

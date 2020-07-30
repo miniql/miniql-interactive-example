@@ -1,6 +1,6 @@
 
 export default {
-    name: "Single species",
+    name: "1. Single species",
     text:
 `
 // This is JSON5: https://json5.org/
@@ -9,7 +9,7 @@ export default {
     "get": {
         "species": {
             "args": {
-                // Sets the name of the species to get.
+                // Gets a single species with this name.
                 "name": "Hutt"
             }
         }
