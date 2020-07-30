@@ -15,6 +15,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-json-view": "^1.19.1",
+    "react-monaco-editor": "^0.39.1",
     "react-scripts": "3.4.1",
     "tailwindcss": "^1.6.0",
     "typy": "^3.3.0"

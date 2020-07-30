@@ -5,11 +5,12 @@ import * as species from "./data/species.json";
 import * as planets from "./data/planets.json";
 import { Input, Button, Tabs, Menu } from 'antd';
 import t from 'typy';
-import { CloseOutlined, CaretRightFilled } from '@ant-design/icons';
+import { CloseOutlined, CaretRightFilled, CaretDownOutlined, DownOutlined } from '@ant-design/icons';
 import ReactJson from "react-json-view";
 import json5 from "json5";
 import { miniql } from "miniql";
 import { createQueryResolver } from "@miniql/inline";
+import MonacoEditor from 'react-monaco-editor';
 const { Search } = Input;
 const { TabPane } = Tabs;
 const { TextArea } = Input;
@@ -21,6 +22,7 @@ function App() {
     const defaultQuery = exampleQueries[0];
     const [queryText, setQueryText] = useState(defaultQuery.text);
     const [queryResult, setQueryResult] = useState(undefined);
+    const [showDataExplorer, setShowDataExplorer] = useState(true);
 
     //
     // Execute a query and display the results.
@@ -49,10 +51,7 @@ function App() {
     return (
         <div className="flex flex-col p-8 h-screen">
             <div 
-                className="flex flex-row"
-                style={{
-                    height: "58%",
-                }}
+                className="flex flex-row flex-grow"
                 >
                 <div className="h-full">
                     <Tabs type="card">
@@ -99,12 +98,23 @@ function App() {
                             <div className="p-1 h-full overflow-auto">
                                 <div className="h-full w-full flex flex-row">
                                     <div className="h-full flex-grow">
-                                        <TextArea 
+                                        {/* <TextArea 
                                             style={{
                                                 height: "100%",
                                             }}
                                             value={queryText}
                                             onChange={e => setQueryText(e.currentTarget.value)}
+                                            /> */}
+
+                                        <MonacoEditor
+                                            language="json"
+                                            value={queryText}
+                                            onChange={setQueryText}
+                                            options={{
+                                                minimap: {
+                                                    enabled: false,
+                                                },
+                                            }}
                                             />
                                     </div>
                                 </div>
@@ -130,10 +140,26 @@ function App() {
                 className="mt-2"
                 type="card"
                 style={{
-                    height: "40%",
+                    height: showDataExplorer ? "40%" : "3.8em",
                 }}
                 >
-                <TabPane tab="Data explorer" className="p-2">
+                <TabPane 
+                    tab={(
+                        <div className="flex flex-row items-center">
+                            <div>
+                                Data explorer
+                            </div>
+                            <Button
+                                className="ml-4 pl-2"
+                                icon={<DownOutlined />}
+                                onClick={() => {
+                                    setShowDataExplorer(!showDataExplorer);
+                                }}
+                                />
+                        </div>
+                    )}
+                    className="p-2"
+                    >
                     {DataTables()}
                 </TabPane>
             </Tabs>
