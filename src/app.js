@@ -215,7 +215,7 @@ function DataTables() {
 
     return (
         <div className="h-full">
-            <div className="flex flex-row items-center">
+            <div className="ml-3 mt-2 flex flex-row items-center">
                 <Search
                     enterButton="Search"
                     placeholder="Enter search text"
@@ -235,11 +235,11 @@ function DataTables() {
                 }
             </div>
 
-            <div className="mt-4 h-full">
-                <Tabs type="card">
+            <div className="m-4 h-full">
+                <Tabs>
                     {datasets.map(dataset => 
                         <TabPane tab={dataset.name} key={dataset.name}>
-                            <div className="p-2 pt-4 h-full overflow-auto">
+                            <div className="pt-4 h-full overflow-auto">
                                 <DataTable
                                     searchText={searchText}
                                     data={dataset.data.default}
