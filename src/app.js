@@ -54,7 +54,32 @@ function App() {
                     height: "58%",
                 }}
                 >
-                <div className="w-1/2 h-full">
+                <div className="h-full">
+                    <Tabs type="card">
+                        <TabPane 
+                            tab="Sample queries"
+                            className="p-1"
+                            >
+                            <Menu 
+                                mode="vertical"
+                                style={{
+                                    width: "200px",
+                                }}
+                                >
+                                {exampleQueries.map(exampleQuery => (
+                                    <Menu.Item
+                                        className="border-0 border-b border-solid border-gray-300"
+                                        key={exampleQuery.name}
+                                        onClick={() => setQueryText(exampleQuery.text)}
+                                        >
+                                        {exampleQuery.name}
+                                    </Menu.Item>
+                                ))}
+                            </Menu>
+                        </TabPane>
+                    </Tabs>
+                </div>
+                <div className="ml-1 w-1/2 h-full">
                     <Tabs type="card">
                         <TabPane 
                             tab={(
@@ -73,24 +98,6 @@ function App() {
                             >
                             <div className="p-1 h-full overflow-auto">
                                 <div className="h-full w-full flex flex-row">
-                                    <div className="h-full">
-                                        <Menu 
-                                            mode="vertical"
-                                            style={{
-                                                width: "200px",
-                                            }}
-                                            >
-                                            {exampleQueries.map(exampleQuery => (
-                                                <Menu.Item
-                                                    className="border-0 border-b border-solid border-gray-300"
-                                                    key={exampleQuery.name}
-                                                    onClick={() => setQueryText(exampleQuery.text)}
-                                                    >
-                                                    {exampleQuery.name}
-                                                </Menu.Item>
-                                            ))}
-                                        </Menu>
-                                    </div>
                                     <div className="h-full flex-grow">
                                         <TextArea 
                                             style={{
@@ -105,7 +112,7 @@ function App() {
                         </TabPane>
                     </Tabs>
                 </div>
-                <div className="w-1/2 h-full">
+                <div className="ml-1 w-1/2 h-full">
                     <Tabs type="card">
                         <TabPane tab="Query Result" className="p-2">
                             <div className="p-1 h-full overflow-auto border border-solid border-gray-400">
