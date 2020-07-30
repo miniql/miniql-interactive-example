@@ -6,11 +6,11 @@ export default {
 // This is JSON5: https://json5.org/
 
 {
-    get: {
-        species: {
-            resolve: {
+    "get": {
+        "species": {
+            "resolve": {
                 // Nested "planet" entity to resolve.
-                homeworld: { 
+                "homeworld": { 
                 }
             }
         }

@@ -6,8 +6,8 @@ export default {
 // This is JSON5: https://json5.org/
 
 {
-    get: {
-        species: {
+    "get": {
+        "species": {
             // Arguments are omitted to get all species.
         }
     }
