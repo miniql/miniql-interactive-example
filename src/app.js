@@ -95,7 +95,7 @@ function App() {
                             )}
                             className="p-1"
                             >
-                            <div className="p-1 h-full overflow-auto">
+                            <div className="p-1 h-full overflow-none">
                                 <div className="h-full w-full flex flex-row">
                                     <div className="h-full flex-grow">
                                         <MonacoEditor
