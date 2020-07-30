@@ -98,14 +98,6 @@ function App() {
                             <div className="p-1 h-full overflow-auto">
                                 <div className="h-full w-full flex flex-row">
                                     <div className="h-full flex-grow">
-                                        {/* <TextArea 
-                                            style={{
-                                                height: "100%",
-                                            }}
-                                            value={queryText}
-                                            onChange={e => setQueryText(e.currentTarget.value)}
-                                            /> */}
-
                                         <MonacoEditor
                                             language="json"
                                             value={queryText}
