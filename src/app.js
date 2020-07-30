@@ -48,6 +48,22 @@ function App() {
         executeQuery(defaultQuery.text);
     }
 
+    //
+    // Function called when Monaco Editor mounts.
+    //
+    function editorWillMount(monaco) {
+        monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+            validate: true,
+            allowComments: true,
+            schemas: [{
+                //fio:
+                // uri: "http://myserver/foo-schema.json",
+                fileMatch: ['*'],
+                schema: createJsonSchema(),
+            }]
+        });
+    }    
+
     return (
         <div className="flex flex-col p-8 h-screen">
             <div 
@@ -108,6 +124,7 @@ function App() {
                                                 },
                                                 contextmenu: false,
                                             }}
+                                            editorWillMount={editorWillMount}
                                             />
                                     </div>
                                 </div>
@@ -221,16 +238,79 @@ const exampleQueries = [
 ];
 
 //
+// Creates a JSON schema for our data format.
+//
+function createJsonSchema() {
+    return {
+        type: "object",
+        properties: {
+            get: {
+                type: "object",
+                properties: createEntitiesSchema(),
+                additionalProperties: false,
+            },
+            additionalProperties: false,
+        },
+        additionalProperties: false,
+    };
+}
+
+//
+// Create JSON schemas for all the entities.
+//
+function createEntitiesSchema() {
+    const entitiesSchema = {};
+    for (const dataset of datasets) {
+        entitiesSchema[dataset.entityName] = {
+            type: "object",
+            properties: {
+                args: {
+                    type: "object",
+                    properties: {
+                        name: {
+                            type: "string",
+                        },
+                    },
+                    additionalProperties: false,
+                },
+                resolve: {
+                    type: "object",
+                    //TODO: Flesh this out further according to what can be resolved.
+                },  
+            },
+            additionalProperties: false,
+        };
+    }
+
+    return entitiesSchema;
+}
+
+//
+// Datasets that can be queried.
+//
+const datasets = [
+    { 
+        name: "Characters", 
+        entityName: "character",
+        data: characters,
+    }, 
+    { 
+        name: "Species", 
+        entityName: "species",
+        data: species,
+    }, 
+    { 
+        name: "Planets", 
+        entityName: "planet",
+        data: planets,
+    }, 
+];
+
+//
 // Renders the data tables.
 //
 function DataTables() {
     const [searchText, setSearchText] = useState("");
-
-    const datasets = [
-        { name: "Characters", data: characters }, 
-        { name: "Species", data: species }, 
-        { name: "Planets", data: planets }, 
-    ];
 
     return (
         <div className="h-full">
