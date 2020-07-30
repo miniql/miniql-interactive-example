@@ -2,6 +2,7 @@
   "name": "miniql-interactive-example",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://miniql.github.io/miniql-interactive-example/",
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "@miniql/inline": "0.0.3",
