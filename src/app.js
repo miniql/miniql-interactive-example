@@ -56,8 +56,6 @@ function App() {
             validate: true,
             allowComments: true,
             schemas: [{
-                //fio:
-                // uri: "http://myserver/foo-schema.json",
                 fileMatch: ['*'],
                 schema: createJsonSchema(),
             }]
@@ -78,7 +76,7 @@ function App() {
                             <Menu 
                                 mode="vertical"
                                 style={{
-                                    width: "200px",
+                                    width: "15em",
                                 }}
                                 >
                                 {exampleQueries.map(exampleQuery => (
