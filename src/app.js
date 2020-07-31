@@ -5,7 +5,7 @@ import * as species from "./data/species.json";
 import * as planets from "./data/planets.json";
 import { Input, Button, Tabs, Menu } from 'antd';
 import t from 'typy';
-import { CloseOutlined, CaretRightFilled, CaretDownOutlined, DownOutlined } from '@ant-design/icons';
+import { CloseOutlined, CaretRightFilled, CaretDownOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import ReactJson from "react-json-view";
 import json5 from "json5";
 import { miniql } from "miniql";
@@ -66,6 +66,9 @@ function App() {
         <div className="flex flex-col p-8 h-screen">
             <div 
                 className="flex flex-row flex-grow"
+                style={{
+                    maxHeight: showDataExplorer ? "60%" : "94%",
+                }}
                 >
                 <div className="h-full">
                     <Tabs type="card">
@@ -131,11 +134,11 @@ function App() {
                     </Tabs>
                 </div>
                 <div className="ml-1 w-1/2 h-full">
-                    <Tabs type="card">
-                        <TabPane tab="Query Result" className="p-2">
+                    <Tabs type="card" className="h-full">
+                        <TabPane tab="Query Result" className="h-full p-2">
                             <div className="p-1 h-full overflow-auto">
                                 <ReactJson
-                                    className="p-1"
+                                    className="p-1 h-full"
                                     src={queryResult}
                                     />
                             </div>
@@ -148,7 +151,7 @@ function App() {
                 className="mt-2"
                 type="card"
                 style={{
-                    height: showDataExplorer ? "40%" : "3.8em",
+                    height: showDataExplorer ? "40%" : "6%",
                 }}
                 >
                 <TabPane 
@@ -159,7 +162,7 @@ function App() {
                             </div>
                             <Button
                                 className="ml-4 pl-2"
-                                icon={<DownOutlined />}
+                                icon={showDataExplorer ? <DownOutlined /> : <UpOutlined /> }
                                 onClick={() => {
                                     setShowDataExplorer(!showDataExplorer);
                                 }}
