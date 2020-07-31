@@ -103,21 +103,29 @@ function App() {
                                 setShowHeader(!showHeader);
                             }}
                             />
+                        
                     </div>
-                    <div 
-                        className="p-4 border-0 border-t-4 border-gray-300 border-solid"
-                        >
-                        <p>
-                            MiniQL is a tiny JSON-based query language inspired by GraphQL.
-                        </p>
+                    <div className="p-4 flex flex-row border-0 border-t-4 border-gray-300 border-solid">
+                        <div>
+                            <p>
+                                MiniQL is a tiny JSON-based query language inspired by GraphQL.
+                            </p>
 
-                        <p>
-                            This example allows you to make queries against Star Wars universe data (source: <a target="_blank" href="https://www.kaggle.com/jsphyg/star-wars/data">Kaggle</a>)
-                        </p>
+                            <p>
+                                Best viewed on desktop.
+                            </p>
+                        </div>
 
-                        <p>
-                            Learn more about MiniQL here: <a target="_blank" href="https://github.com/miniql/miniql">https://github.com/miniql/miniql</a>
-                        </p>
+                        <div className="ml-4">
+                            <p>
+                                <a target="_blank" href="https://github.com/miniql/miniql">Learn more about MiniQL</a>. 
+                                <a className="ml-2" target="_blank" href="https://github.com/miniql/miniql-interactive-example">See the tech used in this example.</a>
+                            </p>
+
+                            <p>
+                                This example allows you to make queries against Star Wars universe data (source: <a target="_blank" href="https://www.kaggle.com/jsphyg/star-wars/data">Kaggle</a>)
+                            </p>
+                        </div>
                     </div>
                 </div>
             </Space.Top>
