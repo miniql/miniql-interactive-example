@@ -1,19 +1,19 @@
 
 export default {
-    name: "2. Single species with nested",
+    name: "2. Vader > Homeworld",
     text:
 `
 // This is JSON5: https://json5.org/
 
 {
     "get": {
-        "species": {
+        "character": {
             "args": {
-                // Gets a single species with this name.
-                "name": "Hutt"
+                "name": "Darth Vader"
             },
             "resolve": {
-                // Nested "planet" entity to resolve.
+
+                // Gets Darth Vader's homeworld.
                 "homeworld": { 
                 }
             }

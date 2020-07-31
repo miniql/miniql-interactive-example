@@ -130,7 +130,7 @@ function App() {
                 </div>
             </Space.Top>
             <Space.Fill>
-                <Space.Left size="18em" className="pl-2 pt-2">
+                <Space.Left size="20em" className="pl-2 pt-2">
                     <Tabs type="card">
                         <TabPane 
                             tab="Sample queries"
@@ -288,10 +288,13 @@ const inlineQueryResolver = createQueryResolver(jsonQueryResolverConfig, inlineD
 // Example queries that can be put in the query editor.
 //
 const exampleQueries = [
-    require(`./queries/single-species`).default,
-    require(`./queries/single-species-with-nested`).default,
-    require(`./queries/all-species`).default,
-    require(`./queries/all-species-with-nested`).default,
+    require(`./queries/get-vader`).default,
+    require(`./queries/get-vader-with-homeworld`).default,
+    require(`./queries/get-vader-with-homeworld-and-species`).default,
+    require(`./queries/get-vader-with-homeworld-and-nested-species`).default,
+    require(`./queries/get-hutt-species`).default,
+    require(`./queries/get-all-species`).default,
+    require(`./queries/get-all-species-with-homeworld`).default,
 ];
 
 //

@@ -1,6 +1,6 @@
 
 export default {
-    name: "3. All species",
+    name: "6. Get all species",
     text:
 `
 // This is JSON5: https://json5.org/
@@ -8,7 +8,8 @@ export default {
 {
     "get": {
         "species": {
-            // Arguments are omitted to get all species.
+            
+            // Gets all species, because no "args".
         }
     }
 }
