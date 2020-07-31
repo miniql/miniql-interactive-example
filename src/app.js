@@ -95,7 +95,7 @@ function App() {
             </Space.Top>
             <Space.Fill className="p-2">
                 <Space.Left size="18em" className="p-1">
-                    <Tabs type="card">
+                    <Tabs type="card" size="small">
                         <TabPane 
                             tab="Sample queries"
                             className="p-1"
@@ -119,7 +119,7 @@ function App() {
 
                 <Space.Fill>
                     <Space.Left size="50%" className="p-1">
-                        <Tabs type="card">
+                        <Tabs type="card" size="small">
                             <TabPane 
                                 tab={(
                                     <div className="flex flex-row items-center">
@@ -153,7 +153,7 @@ function App() {
                     </Space.Left>
 
                     <Space.Right size="50%" className="p-1">
-                        <Tabs type="card" className="h-full">
+                        <Tabs type="card" size="small">
                             <TabPane tab="Query Result" className="h-full p-2">
                                 <div className="p-1 h-full overflow-auto">
                                     <ReactJson
@@ -170,9 +170,7 @@ function App() {
                 className="p-2"
                 size={showDataExplorer ? "200px" : "70px"}
                 >
-                <Tabs 
-                    type="card"
-                    >
+                <Tabs type="card" size="small">
                     <TabPane 
                         tab={(
                             <div className="flex flex-row items-center">
@@ -359,7 +357,7 @@ function DataTables() {
             </div>
 
             <div className="m-4 h-full">
-                <Tabs>
+                <Tabs size="small">
                     {datasets.map(dataset => 
                         <TabPane tab={dataset.name} key={dataset.name}>
                             <div className="pt-4 h-full overflow-auto">
