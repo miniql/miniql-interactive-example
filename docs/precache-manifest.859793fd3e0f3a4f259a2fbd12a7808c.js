@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/miniql-interactive-example/editor.worker.js"
   },
   {
-    "revision": "8e885dcb035bc240d3fe2c575b41aed3",
+    "revision": "f67a7f73b9b7c36075026189b9087452",
     "url": "/miniql-interactive-example/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/miniql-interactive-example/static/css/2.1a5339e7.chunk.css"
   },
   {
-    "revision": "d10337c6078ce1fe5e95",
-    "url": "/miniql-interactive-example/static/css/main.58a8414b.chunk.css"
+    "revision": "40ddeec40546b70ba170",
+    "url": "/miniql-interactive-example/static/css/main.58acaac1.chunk.css"
   },
   {
     "revision": "063ffbee8394dd7dd3d4",
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/miniql-interactive-example/static/js/3.7eacf001.chunk.js"
   },
   {
-    "revision": "d10337c6078ce1fe5e95",
-    "url": "/miniql-interactive-example/static/js/main.a0e6c198.chunk.js"
+    "revision": "40ddeec40546b70ba170",
+    "url": "/miniql-interactive-example/static/js/main.90524429.chunk.js"
   },
   {
     "revision": "c69f6df9c3734ea0014e",
