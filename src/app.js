@@ -135,20 +135,19 @@ function App() {
                                 )}
                                 className="p-1"
                                 >
-                                <div className="p-1 h-full overflow-none">
-                                    <MonacoEditor
-                                        language="json"
-                                        value={queryText}
-                                        onChange={setQueryText}
-                                        options={{
-                                            minimap: {
-                                                enabled: false,
-                                            },
-                                            contextmenu: false,
-                                        }}
-                                        editorWillMount={editorWillMount}
-                                        />
-                                </div>
+                                <MonacoEditor
+                                    language="json"
+                                    value={queryText}
+                                    onChange={setQueryText}
+                                    options={{
+                                        minimap: {
+                                            enabled: false,
+                                        },
+                                        contextmenu: false,
+                                        automaticLayout: true,
+                                    }}
+                                    editorWillMount={editorWillMount}
+                                    />
                             </TabPane>
                         </Tabs>
                     </Space.Left>
