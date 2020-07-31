@@ -11,9 +11,9 @@ import json5 from "json5";
 import { miniql } from "miniql";
 import { createQueryResolver } from "@miniql/inline";
 import MonacoEditor from 'react-monaco-editor';
+import * as Space from 'react-spaces';
 const { Search } = Input;
 const { TabPane } = Tabs;
-const { TextArea } = Input;
 
 //
 // Renders the application.
@@ -63,23 +63,38 @@ function App() {
     }    
 
     return (
-        <div className="flex flex-col p-8 h-screen">
-            
-            <PageHeader 
-                title="MiniQL interactive example"
-                className="bg-white"
-                style={{
-                    height: "8%",
-                }}
-                />
-
-            <div 
-                className="mt-3 flex flex-row flex-grow"
-                style={{
-                    maxHeight: showDataExplorer ? "48%" : "82%",
-                }}
+        <Space.ViewPort>
+            <Space.Top
+                className="p-2"
+                size="17em"
                 >
-                <div className="h-full">
+                <div
+                    className="bg-white"
+                    >
+                    <div 
+                        className="pt-3 pl-4 pr-4"
+                        >
+                        <h1>MiniQL interactive example</h1>
+                    </div>
+                    <div 
+                        className="p-4 border-0 border-t-4 border-gray-300 border-solid"
+                        >
+                        <p>
+                            MiniQL is a tiny JSON-based query language inspired by GraphQL.
+                        </p>
+
+                        <p>
+                            This example allows you to make queries against Star Wars universe data (source: <a target="_blank" href="https://www.kaggle.com/jsphyg/star-wars/data">Kaggle</a>)
+                        </p>
+
+                        <p>
+                            Learn more about MiniQL here: <a target="_blank" href="https://github.com/miniql/miniql">https://github.com/miniql/miniql</a>
+                        </p>
+                    </div>
+                </div>
+            </Space.Top>
+            <Space.Fill className="p-2">
+                <Space.Left size="18em" className="p-1">
                     <Tabs type="card">
                         <TabPane 
                             tab="Sample queries"
@@ -87,9 +102,6 @@ function App() {
                             >
                             <Menu 
                                 mode="vertical"
-                                style={{
-                                    width: "15em",
-                                }}
                                 >
                                 {exampleQueries.map(exampleQuery => (
                                     <Menu.Item
@@ -103,89 +115,90 @@ function App() {
                             </Menu>
                         </TabPane>
                     </Tabs>
-                </div>
-                <div className="ml-1 w-1/2 h-full">
-                    <Tabs type="card">
-                        <TabPane 
-                            tab={(
-                                <div className="flex flex-row items-center">
-                                    <div>
-                                        Query 
-                                    </div>
-                                    <Button
-                                        className="ml-4 pl-2"
-                                        icon={<CaretRightFilled />}
-                                        onClick={() => executeQuery(queryText)}
-                                        />
-                                </div>
-                            )}
-                            className="p-1"
-                            >
-                            <div className="p-1 h-full overflow-none">
-                                <div className="h-full w-full flex flex-row">
-                                    <div className="h-full flex-grow">
-                                        <MonacoEditor
-                                            language="json"
-                                            value={queryText}
-                                            onChange={setQueryText}
-                                            options={{
-                                                minimap: {
-                                                    enabled: false,
-                                                },
-                                                contextmenu: false,
-                                            }}
-                                            editorWillMount={editorWillMount}
+                </Space.Left>
+
+                <Space.Fill>
+                    <Space.Left size="50%" className="p-1">
+                        <Tabs type="card">
+                            <TabPane 
+                                tab={(
+                                    <div className="flex flex-row items-center">
+                                        <div>
+                                            Query 
+                                        </div>
+                                        <Button
+                                            className="ml-4 pl-2"
+                                            icon={<CaretRightFilled />}
+                                            onClick={() => executeQuery(queryText)}
                                             />
                                     </div>
+                                )}
+                                className="p-1"
+                                >
+                                <div className="p-1 h-full overflow-none">
+                                    <MonacoEditor
+                                        language="json"
+                                        value={queryText}
+                                        onChange={setQueryText}
+                                        options={{
+                                            minimap: {
+                                                enabled: false,
+                                            },
+                                            contextmenu: false,
+                                        }}
+                                        editorWillMount={editorWillMount}
+                                        />
                                 </div>
-                            </div>
-                        </TabPane>
-                    </Tabs>
-                </div>
-                <div className="ml-1 w-1/2 h-full">
-                    <Tabs type="card" className="h-full">
-                        <TabPane tab="Query Result" className="h-full p-2">
-                            <div className="p-1 h-full overflow-auto">
-                                <ReactJson
-                                    className="p-1 h-full"
-                                    src={queryResult}
+                            </TabPane>
+                        </Tabs>
+                    </Space.Left>
+
+                    <Space.Right size="50%" className="p-1">
+                        <Tabs type="card" className="h-full">
+                            <TabPane tab="Query Result" className="h-full p-2">
+                                <div className="p-1 h-full overflow-auto">
+                                    <ReactJson
+                                        className="p-1 h-full"
+                                        src={queryResult}
+                                        />
+                                </div>
+                            </TabPane>
+                        </Tabs>
+                    </Space.Right>
+                </Space.Fill>
+            </Space.Fill>
+            <Space.Bottom 
+                className="p-2"
+                size={showDataExplorer ? "200px" : "70px"}
+                >
+                <Tabs 
+                    type="card"
+                    >
+                    <TabPane 
+                        tab={(
+                            <div className="flex flex-row items-center">
+                                <div>
+                                    Data explorer
+                                </div>
+                                <Button
+                                    className="ml-4 pl-2"
+                                    icon={showDataExplorer ? <DownOutlined /> : <UpOutlined /> }
+                                    onClick={() => {
+                                        setShowDataExplorer(!showDataExplorer);
+                                    }}
                                     />
                             </div>
-                        </TabPane>
-                    </Tabs>
-                </div>
-            </div>
-            
-            <Tabs 
-                className="mt-2"
-                type="card"
-                style={{
-                    height: showDataExplorer ? "38%" : "6%",
-                }}
-                >
-                <TabPane 
-                    tab={(
-                        <div className="flex flex-row items-center">
-                            <div>
-                                Data explorer
-                            </div>
-                            <Button
-                                className="ml-4 pl-2"
-                                icon={showDataExplorer ? <DownOutlined /> : <UpOutlined /> }
-                                onClick={() => {
-                                    setShowDataExplorer(!showDataExplorer);
-                                }}
-                                />
-                        </div>
-                    )}
-                    className="p-2"
-                    >
-                    {DataTables()}
-                </TabPane>
-            </Tabs>
-        </div>
+                        )}
+                        className="p-2"
+                        >
+                        {DataTables()}
+                    </TabPane>
+                </Tabs>
+            </Space.Bottom>
+        </Space.ViewPort>
     );
 }
+
 
 //
 // Configures the query resolver.
@@ -249,6 +262,7 @@ const exampleQueries = [
 
 //
 // Creates a JSON schema for our data format.
+// This function returns a JSON schema: https://json-schema.org/understanding-json-schema/
 //
 function createJsonSchema() {
     return {
@@ -267,6 +281,7 @@ function createJsonSchema() {
 
 //
 // Create JSON schemas for all the entities.
+// This function returns a JSON schema: https://json-schema.org/understanding-json-schema/
 //
 function createEntitiesSchema() {
     const entitiesSchema = {};
