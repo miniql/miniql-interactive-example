@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.5.1",
     "json5": "^2.1.3",
-    "miniql": "0.0.8",
+    "miniql": "0.0.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-json-view": "^1.19.1",
