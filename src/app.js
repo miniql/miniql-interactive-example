@@ -87,44 +87,38 @@ function App() {
         <Space.ViewPort>
             <Space.Top
                 className="pt-2 pl-2 pr-2"
-                size={showHeader ? "12em" : "5em"}
+                size={showHeader ? "14em" : "5em"}
                 >
                 <div
                     className="bg-white"
                     >
                     <div 
-                        className="flex flex-row items-center pt-3 pl-4 pr-4"
+                        className="flex flex-row items-start pt-3 pl-4 pr-4 pb-1"
                         >
-                        <h1>MiniQL interactive example</h1>
                         <Button
-                            className="ml-4 mb-2"
+                            className="mr-4 mb-2 mt-2"
                             icon={showHeader ? <UpOutlined /> : <DownOutlined /> }
                             onClick={() => {
                                 setShowHeader(!showHeader);
                             }}
                             />
-                        
-                    </div>
-                    <div className="p-4 flex flex-row border-0 border-t-4 border-gray-300 border-solid">
-                        <div>
-                            <p>
-                                MiniQL is a tiny JSON-based query language inspired by GraphQL.
-                            </p>
-
-                            <p>
+                        <div className="flex flex-col">
+                            <h1>MiniQL interactive example</h1>
+                            <div>
                                 Best viewed on desktop.
-                            </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="p-4 border-0 border-t-4 border-gray-300 border-solid">
+                        <div>
+                            MiniQL is a tiny JSON-based query language inspired by GraphQL.
                         </div>
 
-                        <div className="ml-4">
-                            <p>
-                                <a target="_blank" href="https://github.com/miniql/miniql">Learn more about MiniQL</a>. 
-                                <a className="ml-2" target="_blank" href="https://github.com/miniql/miniql-interactive-example">See the tech used in this example</a>.  
-                            </p>
+                        <a target="_blank" href="https://github.com/miniql/miniql">Learn more about MiniQL</a>. 
+                        <a className="ml-2" target="_blank" href="https://github.com/miniql/miniql-interactive-example">See the tech used in this example</a>.  
 
-                            <p>
-                                This example allows you to make queries against <a target="_blank" href="https://www.kaggle.com/jsphyg/star-wars/data">Star Wars universe data</a>.
-                            </p>
+                        <div>
+                            This example allows you to make queries against <a target="_blank" href="https://www.kaggle.com/jsphyg/star-wars/data">Star Wars universe data</a>.
                         </div>
                     </div>
                 </div>
