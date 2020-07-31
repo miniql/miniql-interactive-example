@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './app.css';
 import * as characters from "./data/characters.json";
 import * as species from "./data/species.json";
@@ -23,6 +23,7 @@ function App() {
     const [queryText, setQueryText] = useState(defaultQuery.text);
     const [queryResult, setQueryResult] = useState(undefined);
     const [showDataExplorer, setShowDataExplorer] = useState(true);
+    const [monacoEditor, setMonacoEditor] = useState(undefined); //TODO: This shouldn't be state.
 
     //
     // Execute a query and display the results.
@@ -49,7 +50,7 @@ function App() {
     }
 
     //
-    // Function called when Monaco Editor mounts.
+    // Function called before Monaco Editor mounts.
     //
     function editorWillMount(monaco) {
         monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
@@ -60,7 +61,27 @@ function App() {
                 schema: createJsonSchema(),
             }]
         });
+    } 
+
+    //
+    // Function called when Monaco Editor mounts.
+    //
+    function editorDidMount(editor, monaco) {
+        setMonacoEditor(editor);
     }    
+
+    function layoutEditor() {
+        requestAnimationFrame(() => { // This is a hack to make sure the DOM has finished rendering before resizing the editor.
+            if (monacoEditor) {
+                monacoEditor.layout();
+            }
+        });
+    }
+
+    useEffect(() => {
+        layoutEditor(); // Re-layout the editor when panels are resized.
+
+    }, [showDataExplorer]);
 
     return (
         <Space.ViewPort>
@@ -147,6 +168,7 @@ function App() {
                                         automaticLayout: true,
                                     }}
                                     editorWillMount={editorWillMount}
+                                    editorDidMount={editorDidMount}
                                     />
                             </TabPane>
                         </Tabs>
