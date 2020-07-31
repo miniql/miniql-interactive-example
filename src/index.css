@@ -66,7 +66,7 @@ tbody tr td:first-of-type {
 
 .ant-tabs-tab-btn {
     height: 25px;
-    color: black;
+    color: black !important;
 }
 
 textarea {
