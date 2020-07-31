@@ -131,7 +131,7 @@ function App() {
             </Space.Top>
             <Space.Fill>
                 <Space.Left size="18em" className="pl-2 pt-2">
-                    <Tabs type="card" size="small">
+                    <Tabs type="card">
                         <TabPane 
                             tab="Sample queries"
                             className="p-1"
@@ -155,7 +155,7 @@ function App() {
 
                 <Space.Fill>
                     <Space.Left size="50%" className="pl-2 pt-2">
-                        <Tabs type="card" size="small">
+                        <Tabs type="card">
                             <TabPane 
                                 tab={(
                                     <div className="flex flex-row items-center">
@@ -190,7 +190,7 @@ function App() {
                     </Space.Left>
 
                     <Space.Right size="50%" className="pl-2 pr-2 pt-2">
-                        <Tabs type="card" size="small">
+                        <Tabs type="card">
                             <TabPane tab="Query Result" className="h-full p-2">
                                 <div className="p-1 h-full overflow-auto">
                                     <ReactJson
