@@ -23,6 +23,7 @@ function App() {
     const [queryText, setQueryText] = useState(defaultQuery.text);
     const [queryResult, setQueryResult] = useState(undefined);
     const [showDataExplorer, setShowDataExplorer] = useState(true);
+    const [showHeader, setShowHeader] = useState(true);
     const [monacoEditor, setMonacoEditor] = useState(undefined); //TODO: This shouldn't be state.
 
     //
@@ -80,22 +81,28 @@ function App() {
 
     useEffect(() => {
         layoutEditor(); // Re-layout the editor when panels are resized.
-
     }, [showDataExplorer]);
 
     return (
         <Space.ViewPort>
             <Space.Top
-                className="p-2"
-                size="17em"
+                className="pt-2 pl-2 pr-2"
+                size={showHeader ? "15em" : "5em"}
                 >
                 <div
                     className="bg-white"
                     >
                     <div 
-                        className="pt-3 pl-4 pr-4"
+                        className="flex flex-row items-center pt-3 pl-4 pr-4"
                         >
                         <h1>MiniQL interactive example</h1>
+                        <Button
+                            className="ml-4 mb-2"
+                            icon={showHeader ? <UpOutlined /> : <DownOutlined /> }
+                            onClick={() => {
+                                setShowHeader(!showHeader);
+                            }}
+                            />
                     </div>
                     <div 
                         className="p-4 border-0 border-t-4 border-gray-300 border-solid"
@@ -114,8 +121,8 @@ function App() {
                     </div>
                 </div>
             </Space.Top>
-            <Space.Fill className="p-2">
-                <Space.Left size="18em" className="p-1">
+            <Space.Fill>
+                <Space.Left size="18em" className="pl-2 pt-2">
                     <Tabs type="card" size="small">
                         <TabPane 
                             tab="Sample queries"
@@ -139,7 +146,7 @@ function App() {
                 </Space.Left>
 
                 <Space.Fill>
-                    <Space.Left size="50%" className="p-1">
+                    <Space.Left size="50%" className="pl-2 pt-2">
                         <Tabs type="card" size="small">
                             <TabPane 
                                 tab={(
@@ -174,7 +181,7 @@ function App() {
                         </Tabs>
                     </Space.Left>
 
-                    <Space.Right size="50%" className="p-1">
+                    <Space.Right size="50%" className="pl-2 pr-2 pt-2">
                         <Tabs type="card" size="small">
                             <TabPane tab="Query Result" className="h-full p-2">
                                 <div className="p-1 h-full overflow-auto">
