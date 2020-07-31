@@ -119,11 +119,11 @@ function App() {
                         <div className="ml-4">
                             <p>
                                 <a target="_blank" href="https://github.com/miniql/miniql">Learn more about MiniQL</a>. 
-                                <a className="ml-2" target="_blank" href="https://github.com/miniql/miniql-interactive-example">See the tech used in this example.</a>
+                                <a className="ml-2" target="_blank" href="https://github.com/miniql/miniql-interactive-example">See the tech used in this example</a>.
                             </p>
 
                             <p>
-                                This example allows you to make queries against Star Wars universe data (source: <a target="_blank" href="https://www.kaggle.com/jsphyg/star-wars/data">Kaggle</a>)
+                                This example allows you to make queries against <a target="_blank" href="https://www.kaggle.com/jsphyg/star-wars/data">Star Wars universe data</a>.
                             </p>
                         </div>
                     </div>
