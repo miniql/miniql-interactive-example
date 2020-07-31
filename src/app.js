@@ -87,7 +87,7 @@ function App() {
         <Space.ViewPort>
             <Space.Top
                 className="pt-2 pl-2 pr-2"
-                size={showHeader ? "15em" : "5em"}
+                size={showHeader ? "12em" : "5em"}
                 >
                 <div
                     className="bg-white"
@@ -119,7 +119,7 @@ function App() {
                         <div className="ml-4">
                             <p>
                                 <a target="_blank" href="https://github.com/miniql/miniql">Learn more about MiniQL</a>. 
-                                <a className="ml-2" target="_blank" href="https://github.com/miniql/miniql-interactive-example">See the tech used in this example</a>.
+                                <a className="ml-2" target="_blank" href="https://github.com/miniql/miniql-interactive-example">See the tech used in this example</a>.  
                             </p>
 
                             <p>
