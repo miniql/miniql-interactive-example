@@ -168,7 +168,7 @@ function App() {
             </Space.Fill>
             <Space.Bottom 
                 className="p-2"
-                size={showDataExplorer ? "200px" : "70px"}
+                size={showDataExplorer ? "25em" : "5em"}
                 >
                 <Tabs type="card" size="small">
                     <TabPane 
