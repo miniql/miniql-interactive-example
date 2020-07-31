@@ -3,7 +3,7 @@ import './app.css';
 import * as characters from "./data/characters.json";
 import * as species from "./data/species.json";
 import * as planets from "./data/planets.json";
-import { Input, Button, Tabs, Menu } from 'antd';
+import { Input, Button, Tabs, Menu, PageHeader } from 'antd';
 import t from 'typy';
 import { CloseOutlined, CaretRightFilled, CaretDownOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import ReactJson from "react-json-view";
@@ -64,10 +64,19 @@ function App() {
 
     return (
         <div className="flex flex-col p-8 h-screen">
-            <div 
-                className="flex flex-row flex-grow"
+            
+            <PageHeader 
+                title="MiniQL interactive example"
+                className="bg-white"
                 style={{
-                    maxHeight: showDataExplorer ? "60%" : "94%",
+                    height: "8%",
+                }}
+                />
+
+            <div 
+                className="mt-3 flex flex-row flex-grow"
+                style={{
+                    maxHeight: showDataExplorer ? "48%" : "82%",
                 }}
                 >
                 <div className="h-full">
@@ -151,7 +160,7 @@ function App() {
                 className="mt-2"
                 type="card"
                 style={{
-                    height: showDataExplorer ? "40%" : "6%",
+                    height: showDataExplorer ? "38%" : "6%",
                 }}
                 >
                 <TabPane 
