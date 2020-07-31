@@ -87,7 +87,7 @@ function App() {
         <Space.ViewPort>
             <Space.Top
                 className="pt-2 pl-2 pr-2"
-                size={showHeader ? "14em" : "5em"}
+                size={showHeader ? "14.75em" : "5em"}
                 >
                 <div
                     className="bg-white"
@@ -109,7 +109,7 @@ function App() {
                             </div>
                         </div>
                     </div>
-                    <div className="p-4 border-0 border-t-4 border-gray-300 border-solid">
+                    <div className="pl-16 p-4 border-0 border-t-4 border-gray-300 border-solid">
                         <div>
                             MiniQL is a tiny JSON-based query language inspired by GraphQL.
                         </div>
