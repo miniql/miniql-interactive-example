@@ -24,3 +24,7 @@ Run it like this:
 ```bash
 npm start
 ```
+
+Now point your web browser at: 
+
+http://localhost:3000/miniql-interactive-example
