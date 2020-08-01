@@ -129,7 +129,7 @@ function App() {
                     <Tabs type="card">
                         <TabPane 
                             tab="Sample queries"
-                            className="p-1"
+                            className="p-1 overflow-y-auto"
                             >
                             <Menu 
                                 mode="vertical"
