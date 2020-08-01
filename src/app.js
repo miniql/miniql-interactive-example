@@ -12,6 +12,7 @@ import { miniql } from "miniql";
 import { createQueryResolver } from "@miniql/inline";
 import MonacoEditor from 'react-monaco-editor';
 import * as Space from 'react-spaces';
+import { serializeError } from 'serialize-error';
 const { Search } = Input;
 const { TabPane } = Tabs;
 
@@ -42,7 +43,7 @@ function App() {
         catch (err) {
             console.error("An error occured running the query:");
             console.error(err && err.stack || err);
-            setQueryResult({ error: err });
+            setQueryResult({ error: serializeError(err) });
         }
     }
 

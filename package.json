@@ -18,6 +18,7 @@
     "react-monaco-editor": "^0.39.1",
     "react-scripts": "3.4.1",
     "react-spaces": "^0.1.25",
+    "serialize-error": "^7.0.1",
     "tailwindcss": "^1.6.0",
     "typy": "^3.3.0"
   },
