@@ -5,7 +5,7 @@ import * as species from "./data/species.json";
 import * as planets from "./data/planets.json";
 import { Input, Button, Tabs, Menu } from 'antd';
 import t from 'typy';
-import { CloseOutlined, CaretRightFilled, DownOutlined, UpOutlined } from '@ant-design/icons';
+import { CloseOutlined, CaretRightFilled, DownOutlined, UpOutlined, RightOutlined, LeftOutlined } from '@ant-design/icons';
 import ReactJson from "react-json-view";
 import json5 from "json5";
 import { miniql } from "miniql";
@@ -16,8 +16,9 @@ import { serializeError } from 'serialize-error';
 const { Search } = Input;
 const { TabPane } = Tabs;
 
-const mediaQuery = window.matchMedia(`(min-width: 800px)`);
-const onDesktop = !mediaQuery.matches;
+const mediaQuery = window.matchMedia(`(min-width: 1000px)`);
+const onDesktop = mediaQuery.matches;
+
 //
 // Renders the application.
 //
@@ -27,6 +28,7 @@ function App() {
     const [queryResult, setQueryResult] = useState(undefined);
     const [showDataExplorer, setShowDataExplorer] = useState(onDesktop);
     const [showHeader, setShowHeader] = useState(onDesktop);
+    const [showSampleQueries, setShowSampleQueries] = useState(onDesktop);
     const [monacoEditor, setMonacoEditor] = useState(undefined); //TODO: This shouldn't be state.
 
     //
@@ -84,13 +86,13 @@ function App() {
 
     useEffect(() => {
         layoutEditor(); // Re-layout the editor when panels are resized.
-    }, [showDataExplorer]);
+    }, [showDataExplorer, showHeader, showSampleQueries]);
 
     return (
         <Space.ViewPort>
             <Space.Top
                 className="pt-2 pl-2 pr-2"
-                size={showHeader ? "14.75em" : "5em"}
+                size={showHeader ? (onDesktop ? "14.75em" : "20em") : "7.5em"}
                 >
                 <div
                     className="bg-white"
@@ -127,10 +129,28 @@ function App() {
                 </div>
             </Space.Top>
             <Space.Fill>
-                <Space.Left size="20em" className="pl-2 pt-2">
+                <Space.Left 
+                    size={showSampleQueries ? "20em" : "5em"}
+                    className="pl-2 pt-2 overflow-hidden"
+                    >
                     <Tabs type="card">
                         <TabPane 
-                            tab="Sample queries"
+                            tab={(
+                                <div className="flex flex-row items-center">
+                                    <Button
+                                        className="mr-2 pl-2"
+                                        icon={showSampleQueries ? <LeftOutlined /> : <RightOutlined />}
+                                        onClick={() => {
+                                            setShowSampleQueries(!showSampleQueries);
+                                        }}
+                                        />
+                                    {showSampleQueries 
+                                        && <div>
+                                            Sample queries
+                                        </div>
+                                    }
+                                </div>
+                            )}
                             className="p-1 overflow-y-auto"
                             >
                             <Menu 
