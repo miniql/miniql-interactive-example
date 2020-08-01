@@ -25,6 +25,8 @@ Run it like this:
 npm start
 ```
 
-Now point your web browser at: 
+Your web browser should open automatically to the web page.
+
+If not please point your web browser at: 
 
 http://localhost:3000/miniql-interactive-example
