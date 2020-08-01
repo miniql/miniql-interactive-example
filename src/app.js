@@ -16,6 +16,8 @@ import { serializeError } from 'serialize-error';
 const { Search } = Input;
 const { TabPane } = Tabs;
 
+const mediaQuery = window.matchMedia(`(min-width: 800px)`);
+const onDesktop = !mediaQuery.matches;
 //
 // Renders the application.
 //
@@ -23,8 +25,8 @@ function App() {
     const defaultQuery = exampleQueries[0];
     const [queryText, setQueryText] = useState(defaultQuery.text);
     const [queryResult, setQueryResult] = useState(undefined);
-    const [showDataExplorer, setShowDataExplorer] = useState(true);
-    const [showHeader, setShowHeader] = useState(true);
+    const [showDataExplorer, setShowDataExplorer] = useState(onDesktop);
+    const [showHeader, setShowHeader] = useState(onDesktop);
     const [monacoEditor, setMonacoEditor] = useState(undefined); //TODO: This shouldn't be state.
 
     //
