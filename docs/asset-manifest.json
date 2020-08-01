@@ -1,32 +1,32 @@
 {
   "files": {
-    "main.css": "/miniql-interactive-example/static/css/main.58acaac1.chunk.css",
-    "main.js": "/miniql-interactive-example/static/js/main.a1e65fa8.chunk.js",
-    "main.js.map": "/miniql-interactive-example/static/js/main.a1e65fa8.chunk.js.map",
-    "runtime-main.js": "/miniql-interactive-example/static/js/runtime-main.c61c1e33.js",
-    "runtime-main.js.map": "/miniql-interactive-example/static/js/runtime-main.c61c1e33.js.map",
+    "main.css": "/miniql-interactive-example/static/css/main.1f34de89.chunk.css",
+    "main.js": "/miniql-interactive-example/static/js/main.0754c5c8.chunk.js",
+    "main.js.map": "/miniql-interactive-example/static/js/main.0754c5c8.chunk.js.map",
+    "runtime-main.js": "/miniql-interactive-example/static/js/runtime-main.09441ee7.js",
+    "runtime-main.js.map": "/miniql-interactive-example/static/js/runtime-main.09441ee7.js.map",
     "static/css/2.1a5339e7.chunk.css": "/miniql-interactive-example/static/css/2.1a5339e7.chunk.css",
-    "static/js/2.4681eb0b.chunk.js": "/miniql-interactive-example/static/js/2.4681eb0b.chunk.js",
-    "static/js/2.4681eb0b.chunk.js.map": "/miniql-interactive-example/static/js/2.4681eb0b.chunk.js.map",
-    "static/js/3.d6c0de67.chunk.js": "/miniql-interactive-example/static/js/3.d6c0de67.chunk.js",
-    "static/js/3.d6c0de67.chunk.js.map": "/miniql-interactive-example/static/js/3.d6c0de67.chunk.js.map",
+    "static/js/2.f65a8b4a.chunk.js": "/miniql-interactive-example/static/js/2.f65a8b4a.chunk.js",
+    "static/js/2.f65a8b4a.chunk.js.map": "/miniql-interactive-example/static/js/2.f65a8b4a.chunk.js.map",
+    "static/js/3.f0c8ab08.chunk.js": "/miniql-interactive-example/static/js/3.f0c8ab08.chunk.js",
+    "static/js/3.f0c8ab08.chunk.js.map": "/miniql-interactive-example/static/js/3.f0c8ab08.chunk.js.map",
     "editor.worker.js": "/miniql-interactive-example/editor.worker.js",
     "editor.worker.js.map": "/miniql-interactive-example/editor.worker.js.map",
     "index.html": "/miniql-interactive-example/index.html",
     "json.worker.js": "/miniql-interactive-example/json.worker.js",
     "json.worker.js.map": "/miniql-interactive-example/json.worker.js.map",
-    "precache-manifest.670e5f7b58eeacab966a404d9e5ac4b3.js": "/miniql-interactive-example/precache-manifest.670e5f7b58eeacab966a404d9e5ac4b3.js",
+    "precache-manifest.90542b1b9980a1f4b95b1e6b13bceddc.js": "/miniql-interactive-example/precache-manifest.90542b1b9980a1f4b95b1e6b13bceddc.js",
     "service-worker.js": "/miniql-interactive-example/service-worker.js",
     "static/css/2.1a5339e7.chunk.css.map": "/miniql-interactive-example/static/css/2.1a5339e7.chunk.css.map",
-    "static/css/main.58acaac1.chunk.css.map": "/miniql-interactive-example/static/css/main.58acaac1.chunk.css.map",
-    "static/js/2.4681eb0b.chunk.js.LICENSE.txt": "/miniql-interactive-example/static/js/2.4681eb0b.chunk.js.LICENSE.txt",
+    "static/css/main.1f34de89.chunk.css.map": "/miniql-interactive-example/static/css/main.1f34de89.chunk.css.map",
+    "static/js/2.f65a8b4a.chunk.js.LICENSE.txt": "/miniql-interactive-example/static/js/2.f65a8b4a.chunk.js.LICENSE.txt",
     "static/media/codicon.css": "/miniql-interactive-example/static/media/codicon.a609dc0f.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.c61c1e33.js",
+    "static/js/runtime-main.09441ee7.js",
     "static/css/2.1a5339e7.chunk.css",
-    "static/js/2.4681eb0b.chunk.js",
-    "static/css/main.58acaac1.chunk.css",
-    "static/js/main.a1e65fa8.chunk.js"
+    "static/js/2.f65a8b4a.chunk.js",
+    "static/css/main.1f34de89.chunk.css",
+    "static/js/main.0754c5c8.chunk.js"
   ]
 }
