@@ -108,7 +108,7 @@ function App() {
                             }}
                             />
                         <div className="flex flex-col">
-                            <h1>MiniQL interactive example</h1>
+                            <h1><a target="_blank" href="https://github.com/miniql/miniql">MiniQL</a> interactive example</h1>
                             <div>
                                 Best viewed on desktop or in landscape.
                             </div>
