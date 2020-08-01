@@ -241,6 +241,8 @@ const jsonQueryResolverConfig = {
                 parentKey: "homeworld",
                 from: "planet",
             },
+            species: {
+            },
         },
     },
     species: {
