@@ -35,7 +35,7 @@ function App() {
             const query = json5.parse(queryText);
             console.log("Executing query:");
             console.log(query);
-            const result = await miniql(query, inlineQueryResolver, {});
+            const result = await miniql(query, inlineQueryResolver, { verbose: true });
             console.log("Setting query result:");
             console.log(result);
             setQueryResult(result);
@@ -233,40 +233,42 @@ function App() {
 // Configures the query resolver.
 //
 const jsonQueryResolverConfig = {
-    character: {
-        primaryKey: "name",
-        jsonFilePath: "./data/planets.json",
-        nested: {
-            homeworld: {
-                parentKey: "homeworld",
-                from: "planet",
+    entities: {
+        character: {
+            primaryKey: "name",
+            jsonFilePath: "./data/planets.json",
+            nested: {
+                homeworld: {
+                    from: "planet",
+                },
+                species: {
+                },
             },
-            species: {
+        },
+        species: {
+            primaryKey: "name",
+            nested: {
+                homeworld: {
+                    from: "planet",
+                },
+            },
+        },
+        planet: {
+            primaryKey: "name",
+            nested: {
+                species: {
+                    foreignKey: "homeworld",
+                },
+                characters: {
+                    from: "character",
+                    multiple: true,
+                    parentKey: "name",
+                    foreignKey: "homeworld"
+                },
             },
         },
     },
-    species: {
-        primaryKey: "name",
-        nested: {
-            homeworld: {
-                parentKey: "homeworld",
-                from: "planet",
-            },
-        },
-    },
-    planet: {
-        primaryKey: "name",
-        nested: {
-            species: {
-                foreignKey: "homeworld",
-            },
-            characters: {
-                from: "character",
-                multiple: true,
-                foreignKey: "homeworld"
-            },
-        },
-    },
+    verbose: true,
 };
 
 //
