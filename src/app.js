@@ -91,8 +91,8 @@ function App() {
     return (
         <Space.ViewPort>
             <Space.Top
-                className="pt-2 pl-2 pr-2"
-                size={showHeader ? (onDesktop ? "14.75em" : "20em") : "7.5em"}
+                className="pt-2 pl-2 pr-2 overflow-y-auto"
+                size={showHeader ? "14.75em" : "7.5em"}
                 >
                 <div
                     className="bg-white"
@@ -110,7 +110,7 @@ function App() {
                         <div className="flex flex-col">
                             <h1>MiniQL interactive example</h1>
                             <div>
-                                Best viewed on desktop.
+                                Best viewed on desktop or in landscape.
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@ function App() {
             </Space.Top>
             <Space.Fill>
                 <Space.Left 
-                    size={showSampleQueries ? "20em" : "5em"}
+                    size={showSampleQueries ? "20em" : "7em"}
                     className="pl-2 pt-2 overflow-hidden"
                     >
                     <Tabs type="card">
