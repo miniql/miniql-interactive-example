@@ -241,9 +241,6 @@ const jsonQueryResolverConfig = {
                 parentKey: "homeworld",
                 from: "planet",
             },
-            species: {
-                parentKey: "species",
-            },
         },
     },
     species: {
@@ -260,6 +257,11 @@ const jsonQueryResolverConfig = {
         nested: {
             species: {
                 foreignKey: "homeworld",
+            },
+            characters: {
+                from: "character",
+                multiple: true,
+                foreignKey: "homeworld"
             },
         },
     },
@@ -286,7 +288,7 @@ const exampleQueries = [
     require(`./queries/get-vader`).default,
     require(`./queries/get-vader-with-homeworld`).default,
     require(`./queries/get-vader-with-homeworld-and-species`).default,
-    require(`./queries/get-vader-with-homeworld-and-nested-species`).default,
+    require(`./queries/get-vader-with-homeworld-and-nested-characters`).default,
     require(`./queries/get-hutt-species`).default,
     require(`./queries/get-all-species`).default,
     require(`./queries/get-all-species-with-homeworld`).default,

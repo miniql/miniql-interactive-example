@@ -1,6 +1,6 @@
 
 export default {
-    name: "4. Vader > Homeworld > Species",
+    name: "4. Vader > Homeworld > Characters",
     text:
 `
 // This is JSON5: https://json5.org/
@@ -18,8 +18,8 @@ export default {
                 "homeworld": { 
                     "resolve": {
 
-                        // Gets all species from Darth Vader's homeworld.
-                        "species": { 
+                        // Gets all characters from Darth Vader's homeworld.
+                        "characters": { 
                         }
                     }
                 }
