@@ -5,8 +5,6 @@ export default {
 `
 // This is JSON5: https://json5.org/
 
-// !! This query doesn't work yet !!
-
 {
     "get": {
         "character": {
