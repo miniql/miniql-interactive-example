@@ -6,6 +6,28 @@ Click here to see the live version of this: https://miniql.github.io/miniql-inte
 
 If you have Node.js installed you can run get the code here and run it for yourself.
 
+# Tech use in this example
+
+Data queries using:
+
+- [MiniQL](https://github.com/miniql/miniql)
+
+UI built with:
+
+- [React](https://reactjs.org/)
+- [Ant Design](https://ant.design/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Monaco Editor](https://microsoft.github.io/monaco-editor/)
+- [React Spaces](https://github.com/aeagle/react-spaces)
+- [React JSON View](https://github.com/mac-s-g/react-json-view)
+
+JSON support:
+
+- [JSON5](https://json5.org/)
+- [JSON Schema](https://json-schema.org/)
+
+# Running the example yourself
+
 ## Setup
 
 [Download the zip file](https://github.com/miniql/miniql-interactive-example/archive/master.zip) for this repo or use Git to clone it locally.
