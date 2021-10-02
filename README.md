@@ -6,6 +6,8 @@ Click here to see the live version of this: https://miniql.github.io/miniql-inte
 
 If you have Node.js installed you can run get the code here and run it for yourself.
 
+[Click here to support my work](https://www.codecapers.com.au/about#support-my-work)
+
 # Tech use in this example
 
 Data queries using:
